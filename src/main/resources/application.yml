@@ -1,0 +1,51 @@
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+prefect:
+  url: "http://prefect-server-apollo.prefect.svc:4200"
+  project: "NUTS-DEV"
+  s2estWF: "S2EST_DEV_workflow"
+  s2proWF: "S2_DEV_workflow"
+  demEstWF: "DEMEST_DEV_workflow"
+  demProWF: "DEM_DEV_workflow"
+
+killbill:
+  url: "http://killbill.killbill.svc:8080"
+  username: XXXXXXXXXXXX
+  password: XXXXXXXXXXXX
+  apiKey: XXXXXXXXXXXX
+  apiSecret: XXXXXXXXXXXX
+
+server:
+  port: 9090
+  basePath: nuts
+  baseBillPath: bill
+  internalUrl: "http://nuts-be-service.nuts-dev.svc:9090"
+  externalUrl: "https://k8s.alia-space.com/bedev"
+  max-http-header-size: 40KB
+
+spring:
+  datasource:
+    #url: jdbc:postgresql://nutsdb-pgbouncer.nuts.svc:5432/nuts_db
+    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://nutsdbdev-pgbouncer.nuts-dev.svc:5432/nuts_db
+    username: XXXXXXXXXXXX
+    password: XXXXXXXXXXXX
+  rabbitmq:
+    host: nuts-mq.nuts-mq.svc
+    password: XXXXXXXXXXXX
+    port: 5672
+    username: XXXXXXXXXXXX
+    exchange: amq.topic
+    queue: KK-APPUSER
+    routingkey: KK.EVENT.*.AppUser.#
+jpa:
+  hibernate:
+    ddl-auto: validate
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      default_schema: public
+      show_sql: true

@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.0'
+    id 'java'
+    id "io.swagger.core.v3.swagger-gradle-plugin" version "2.1.13"
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.alia'
+version '1.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:2.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp:2.6.2'
+
+    implementation 'org.json:json:20211205'
+    runtimeOnly 'org.postgresql:postgresql:42.3.1'
+    implementation 'org.kill-bill.billing:killbill-client-java:1.2.5'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.8'
+//    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+//    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+}
